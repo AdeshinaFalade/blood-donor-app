@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+    <androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:padding="5dp"
+    android:layout_height="110dp">
+   
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_weight="0.7">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/bloodGroupImageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/a_negative"
+            android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adeshina Falade"
+                android:id="@+id/txtDonorName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="4dp"
+             android:textSize="16sp"
+                android:textStyle="bold"
+            android:layout_toRightOf="@+id/bloodGroupImageView"/>
+
+            <TextView
+                android:id="@+id/txtLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lagos, Nigeria"
+                android:layout_toRightOf="@+id/bloodGroupImageView"
+                android:layout_below="@+id/txtDonorName"
+                android:layout_marginLeft="10dp"
+                
+                
+                
+                />
+        
+        
+        
+        </RelativeLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:background="@color/lightash"
+            android:layout_height="2dp"/>
+    
+    
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0.1dp" 
+        android:layout_weight="0.3">
+
+        <!--- Call layout-->
+  <RelativeLayout
+            android:id="@+id/callLayout"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33">
+
+            <ImageView
+                android:layout_toLeftOf="@+id/txtCall"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+                android:src="@drawable/phone"/>
+            <TextView
+                android:id="@+id/txtCall"
+             android:layout_height="wrap_content"   
+                android:text="Call"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"/>
+        
+        
+        </RelativeLayout>
+
+        <!--- Email layout-->
+        <RelativeLayout
+            android:id="@+id/emailLayout"
+            
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.34">
+
+            <ImageView
+                android:layout_toLeftOf="@+id/txtMail"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+                android:src="@drawable/mail"/>
+            <TextView
+                android:id="@+id/txtMail"
+             android:layout_height="wrap_content"   
+                android:text="Mail"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"/>
+
+        
+        
+        
+        
+        </RelativeLayout>
+
+        <!--- Delete layout-->
+        <RelativeLayout
+            android:id="@+id/deleteLayout"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:layout_width="0.1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33">
+
+            <ImageView
+                android:layout_toLeftOf="@+id/txtDelete"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+                android:src="@drawable/delete"/>
+            <TextView
+                android:id="@+id/txtDelete"
+             android:layout_height="wrap_content"   
+                android:text="Delete"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"/>
+        
+        
+        
+        
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>
