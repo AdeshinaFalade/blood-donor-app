@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
+          
             android:id="@+id/donorsRecyclerview"
             android:background="@color/lightash"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="vertical"/>
 
         <TextView
@@ -26,7 +27,20 @@
             android:id="@+id/txtPlaceholder"
             android:layout_height="wrap_content"/>
 
+        
+
     </RelativeLayout>
+    
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:text="No Blood Donor"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:id="@+id/txtSelected"
+            android:layout_height="wrap_content"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -39,6 +53,6 @@
         
         
         />
-
+    
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

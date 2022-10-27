@@ -4,17 +4,22 @@ using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using System;
 using System.Collections.Generic;
+using static Android.Content.ClipData;
+using static AndroidX.RecyclerView.Widget.RecyclerView;
 
 namespace blood_donor_app
 {
-    internal class AdapterDonors : RecyclerView.Adapter
+    public class AdapterDonors : RecyclerView.Adapter
     {
         public event EventHandler<AdapterDonorsClickEventArgs> ItemClick;
         public event EventHandler<AdapterDonorsClickEventArgs> ItemLongClick;
         public event EventHandler<AdapterDonorsClickEventArgs> CallClick;
         public event EventHandler<AdapterDonorsClickEventArgs> MailClick;
+        
+        AdapterDonorsViewHolder h;
         public event EventHandler<AdapterDonorsClickEventArgs> DeleteClick;
         List<Donor> DonorsList;
+        public string name;
 
         public AdapterDonors(List<Donor> data)
         {
@@ -31,7 +36,7 @@ namespace blood_donor_app
             //itemView = LayoutInflater.From(parent.Context).
             //       Inflate(id, parent, false);
 
-            itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.donor_row, parent, false);   
+            itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.donor_row, parent, false);
 
             var vh = new AdapterDonorsViewHolder(itemView, OnClick, OnLongClick, OnCallClick, OnMailClick, OnDeleteClick);
             return vh;
@@ -91,37 +96,55 @@ namespace blood_donor_app
         void OnMailClick(AdapterDonorsClickEventArgs args) => MailClick?.Invoke(this, args);
         void OnDeleteClick(AdapterDonorsClickEventArgs args) => DeleteClick?.Invoke(this, args);
 
+        [Obsolete]
+     
+     
 
-    }
+        /**
 
-    public class AdapterDonorsViewHolder : RecyclerView.ViewHolder
-    {
-        //public TextView TextView { get; set; }
-        public TextView donorNameTextView;
-        public TextView donorLocationTextView;   
-        public ImageView bloodGroupImageView;
-        public RelativeLayout callLayout;
-        public RelativeLayout mailLayout;
-        public RelativeLayout deleteLayout;
+         [Obsolete]
+         public void OnViewAttachedToWindow(AdapterDonorsViewHolder holder)
+         {
+             TextView txtSelected = holder.v.FindViewById<TextView>(Resource.Id.txtSelected);
+             Donor item = DonorsList[holder.AdapterPosition];
+             name = item.FullName;
+             txtSelected.Text = name;    
+             base.OnViewAttachedToWindow(holder);
+         }
+        **/
 
 
-        public AdapterDonorsViewHolder(View itemView, Action<AdapterDonorsClickEventArgs> clickListener,
-                            Action<AdapterDonorsClickEventArgs> longClickListener, Action<AdapterDonorsClickEventArgs> callClickListener,
-                            Action<AdapterDonorsClickEventArgs> mailClickListener,
-                            Action<AdapterDonorsClickEventArgs> deleteClickListener) : base(itemView)
+        public class AdapterDonorsViewHolder : RecyclerView.ViewHolder
         {
-            //TextView = v;
-            donorNameTextView = itemView.FindViewById<TextView>(Resource.Id.txtDonorName);
-            donorLocationTextView = (TextView)itemView.FindViewById(Resource.Id.txtLocation);
-            bloodGroupImageView = (ImageView)itemView.FindViewById(Resource.Id.bloodGroupImageView);
-            callLayout = (RelativeLayout)itemView.FindViewById(Resource.Id.callLayout);
-            mailLayout = (RelativeLayout)itemView.FindViewById(Resource.Id.emailLayout);
-            deleteLayout = (RelativeLayout)itemView.FindViewById(Resource.Id.deleteLayout);
-            itemView.Click += (sender, e) => clickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
-            itemView.LongClick += (sender, e) => longClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
-            callLayout.Click += (sender,e) => callClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
-            mailLayout.Click += (sender,e) => mailClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
-            deleteLayout.Click += (sender, e) => deleteClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });  
+            //public TextView TextView { get; set; }
+            public TextView donorNameTextView;
+            public TextView donorLocationTextView;
+            public View v;
+            public ImageView bloodGroupImageView;
+            public RelativeLayout callLayout;
+            public RelativeLayout mailLayout;
+            public RelativeLayout deleteLayout;
+
+
+            public AdapterDonorsViewHolder(View itemView, Action<AdapterDonorsClickEventArgs> clickListener,
+                                Action<AdapterDonorsClickEventArgs> longClickListener, Action<AdapterDonorsClickEventArgs> callClickListener,
+                                Action<AdapterDonorsClickEventArgs> mailClickListener,
+                                Action<AdapterDonorsClickEventArgs> deleteClickListener) : base(itemView)
+            {
+                //TextView = v;
+                donorNameTextView = itemView.FindViewById<TextView>(Resource.Id.txtDonorName);
+                donorLocationTextView = (TextView)itemView.FindViewById(Resource.Id.txtLocation);
+                bloodGroupImageView = (ImageView)itemView.FindViewById(Resource.Id.bloodGroupImageView);
+                callLayout = (RelativeLayout)itemView.FindViewById(Resource.Id.callLayout);
+                mailLayout = (RelativeLayout)itemView.FindViewById(Resource.Id.emailLayout);
+                deleteLayout = (RelativeLayout)itemView.FindViewById(Resource.Id.deleteLayout);
+                itemView.Click += (sender, e) => clickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
+                itemView.LongClick += (sender, e) => longClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
+                callLayout.Click += (sender, e) => callClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
+                mailLayout.Click += (sender, e) => mailClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
+                deleteLayout.Click += (sender, e) => deleteClickListener(new AdapterDonorsClickEventArgs { View = itemView, Position = AdapterPosition });
+            }
+
         }
     }
 
@@ -130,4 +153,6 @@ namespace blood_donor_app
         public View View { get; set; }
         public int Position { get; set; }
     }
-}
+
+}   
+    

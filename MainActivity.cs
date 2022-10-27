@@ -16,7 +16,7 @@ namespace blood_donor_app
     public class MainActivity : AppCompatActivity
     {   
 
-        RecyclerView donorsRecyclerview;
+        RecyclerView donorsRecyclerview;    
         AdapterDonors AdapterDonors;
         List<Donor> listOfDonor = new List<Donor>();
         public Fragments.NewDonorFragment newDonorFragment;
@@ -65,13 +65,14 @@ namespace blood_donor_app
             
         }
 
+        [System.Obsolete]
         private void NewDonorFragment_OnDonorRegistered(object sender, Fragments.NewDonorFragment.DonorDetailsEventArgs e)
         {
 
             if (newDonorFragment != null)
             {
                 newDonorFragment.Dismiss();
-                newDonorFragment = null;
+                newDonorFragment = null;    
             }
             if (listOfDonor.Count > 0)
             {
@@ -116,7 +117,7 @@ namespace blood_donor_app
 
         void SetupRecyclerView()
         {
-            donorsRecyclerview.SetLayoutManager(new LinearLayoutManager(donorsRecyclerview.Context));
+            donorsRecyclerview.SetLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.Horizontal,false));
             AdapterDonors = new AdapterDonors(listOfDonor);
             AdapterDonors.ItemClick += AdapterDonors_ItemClick;
             AdapterDonors.CallClick += AdapterDonors_CallClick;

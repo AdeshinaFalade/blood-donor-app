@@ -14,7 +14,7 @@ using System.Text;
 
 namespace blood_donor_app.Fragments
 {
-    
+    [Obsolete]
     public class NewDonorFragment : DialogFragment
     {
         TextInputLayout txtName;
